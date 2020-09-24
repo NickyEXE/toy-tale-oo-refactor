@@ -4,6 +4,10 @@
     <meta charset="utf-8" />
     <title>Toy Tale</title>
     <link rel="stylesheet" href="index.css" />
+    <script type="text/javascript" src="src/components/ToyForm.js"></script>
+    <script type="text/javascript" src="src/components/Adapter.js"></script>
+    <script type="text/javascript" src="src/components/ToyCard.js"></script>
+    <script defer type="text/javascript" src="src/index.js"></script>
   </head>
   <body>
     <div id="toy-header">
@@ -14,38 +18,16 @@
     </div>
 
     <div class="container">
-      <form class="add-toy-form">
-        <h3>Create a toy!</h3>
-
-        <input
-          type="text"
-          name="name"
-          value=""
-          placeholder="Enter a toy's name..."
-          class="input-text"
-        />
-        <br />
-        <input
-          type="text"
-          name="image"
-          value=""
-          placeholder="Enter a toy's image URL..."
-          class="input-text"
-        />
-        <br />
-        <input
-          type="submit"
-          name="submit"
-          value="Create New Toy"
-          class="submit"
-        />
-      </form>
     </div>
     <p style="text-align:center">
       Andy needs your help! <button id="new-toy-btn">Add a new toy!</button>
     </p>
 
+    <select name="sort" id="sort-select">
+      <option value="alphabetical">Alphabetical</option>
+      <option value="likes">By Likes</option>
+    </select>
     <div id="toy-collection"></div>
-    <script type="text/javascript" src="src/index.js"></script>
+
   </body>
 </html>

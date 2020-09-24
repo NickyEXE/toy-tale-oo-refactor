@@ -1,15 +1,7 @@
-let addToy = false;
+let api = new Adapter("http://localhost:3000")
+const toyFormContainer = document.querySelector(".container");
+const toyForm = new ToyForm()
+ToyCard.getToys()
+document.getElementById("sort-select").addEventListener("change", ToyCard.handleSort)
 
-document.addEventListener("DOMContentLoaded", () => {
-  const addBtn = document.querySelector("#new-toy-btn");
-  const toyFormContainer = document.querySelector(".container");
-  addBtn.addEventListener("click", () => {
-    // hide & seek with the form
-    addToy = !addToy;
-    if (addToy) {
-      toyFormContainer.style.display = "block";
-    } else {
-      toyFormContainer.style.display = "none";
-    }
-  });
-});
+document.getElementById("toy-collection").addEventListener("click", ToyCard.handleClick)
