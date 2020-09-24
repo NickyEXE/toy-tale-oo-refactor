@@ -15,7 +15,7 @@ class ToysController < ApplicationController
   # POST /toys
   def create
     @toy = Toy.new(toy_params)
-
+    byebug
     if @toy.save
       render json: @toy, status: :created, location: @toy
     else
