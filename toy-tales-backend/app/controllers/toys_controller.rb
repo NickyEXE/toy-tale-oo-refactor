@@ -15,7 +15,6 @@ class ToysController < ApplicationController
   # POST /toys
   def create
     @toy = Toy.new(toy_params)
-    byebug
     if @toy.save
       render json: @toy, status: :created, location: @toy
     else
@@ -25,7 +24,11 @@ class ToysController < ApplicationController
 
   # PATCH/PUT /toys/1
   def update
-    @toy.like
+    if params[:name]
+      @toy.update(toy_params)
+    else
+      @toy.like
+    end
     render json: @toy
   end
 
