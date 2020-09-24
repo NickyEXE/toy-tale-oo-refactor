@@ -29,6 +29,7 @@ class ToyCard {
       <img src=${image} class="toy-avatar" />
       <p>${likes} Likes </p>
       <button class="like-btn">Like <3</button>
+      <button class="edit-btn">Edit ${name}</button>
       `
   }
 
@@ -40,11 +41,17 @@ class ToyCard {
     toyCollection.addEventListener("click", this.handleClick)
   }
 
-  static handleClick(e){
+  static handleClick = (e) => {
     if (e.target.classList.contains("like-btn")){
       const card = e.target.closest(".card")
       const id = card.dataset.id
       api.likeToy(id).then(toy => ToyCard.findById(id).update(toy))
+    }
+    if (e.target.classList.contains("edit-btn")){
+      const card = e.target.closest(".card")
+      const id = card.dataset.id
+      const toyCard = this.findById(id)
+      toyFormInstance.renderEditToyForm(toyCard.toy)
     }
   }
 

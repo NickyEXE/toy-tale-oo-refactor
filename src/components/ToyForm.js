@@ -7,7 +7,10 @@ class ToyForm {
   }
 
   addEventListeners(){
-    addBtn.addEventListener("click", this.toggleForm);
+    addBtn.addEventListener("click", () => {
+      this.renderNewToyForm()
+      this.toggleForm()
+    });
     toyFormContainer.addEventListener("submit", this.handleSubmit)
   }
 
@@ -15,7 +18,17 @@ class ToyForm {
   handleSubmit = (e) => {
     e.preventDefault()
     const data = this.getDataFromForm(e.target)
-    api.postToy(data).then(toy => new ToyCard(toy))
+    const id = e.target.dataset.id
+    if (id){
+      api.updateToy(id, data).then(toy => {
+        ToyCard.findById(id).update(toy)
+        this.renderNewToyForm()
+        this.toggleForm()
+      })
+    }
+    else {
+      api.postToy(data).then(toy => new ToyCard(toy))
+    }
   }
 
   getDataFromForm = (form) => {
@@ -32,8 +45,39 @@ class ToyForm {
   }
 
 
+  renderEditToyForm(toy){
+    !this.showForm && this.toggleForm()
+     toyFormContainer.innerHTML = `
+     <form class="update-toy-form" data-id=${toy.id}>
+     <h3>Update ${toy.name}!</h3>
+
+     <input
+       type="text"
+       name="name"
+       value="${toy.name}"
+       placeholder="Enter a toy's name..."
+       class="input-text"
+     />
+     <br />
+     <input
+       type="text"
+       name="image"
+       value="${toy.image}"
+       placeholder="Enter a toy's image URL..."
+       class="input-text"
+     />
+     <br />
+     <input
+       type="submit"
+       name="submit"
+       value="Update!"
+       class="submit"
+     />
+   </form>
+   `
+  }
+
   renderNewToyForm(){
-    console.log("hello")
      toyFormContainer.innerHTML = `
      <form class="add-toy-form">
      <h3>Create a toy!</h3>
