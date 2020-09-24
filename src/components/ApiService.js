@@ -16,4 +16,7 @@ class ApiService {
     })
     .then(res => res.json())
   }
+
+  likeToy = (id) => fetch(`${this.root}/toys/${id}`, {method: "PATCH"}).then(res => res.json())
+
 }

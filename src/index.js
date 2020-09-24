@@ -8,3 +8,4 @@ const addBtn = document.querySelector("#new-toy-btn");
 
 const toyFormInstance = new ToyForm
 ToyCard.getAll()
+ToyCard.setEventListeners()
