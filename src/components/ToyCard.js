@@ -91,13 +91,11 @@ class ToyCard {
 
   static handleSort = (e) => {
     this.filter = e.target.value
-    console.log(this.filter)
     this.renderAllCards()
   }
 
   static renderAllCards(){
     document.getElementById("toy-collection").innerHTML = ""
-    console.log("calling", this.all)
     this.filteredCards().forEach(item => item.renderWholeCard())
   }
 
