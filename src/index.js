@@ -1,15 +1,10 @@
-let addToy = false;
+const api = new ApiService ("https://toytales.herokuapp.com")
 
-document.addEventListener("DOMContentLoaded", () => {
-  const addBtn = document.querySelector("#new-toy-btn");
-  const toyFormContainer = document.querySelector(".container");
-  addBtn.addEventListener("click", () => {
-    // hide & seek with the form
-    addToy = !addToy;
-    if (addToy) {
-      toyFormContainer.style.display = "block";
-    } else {
-      toyFormContainer.style.display = "none";
-    }
-  });
-});
+// elements
+const toyFormContainer = document.querySelector(".container");
+const toyCollection = document.getElementById("toy-collection");
+const addBtn = document.querySelector("#new-toy-btn");
+
+
+const toyFormInstance = new ToyForm
+ToyCard.getAll()
