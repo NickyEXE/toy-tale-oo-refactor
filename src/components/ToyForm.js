@@ -27,7 +27,10 @@ class ToyForm {
       })
     }
     else {
-      api.postToy(data).then(toy => new ToyCard(toy))
+      api.postToy(data).then(toy => {
+        new ToyCard(toy)
+        ToyCard.rerenderAll()
+      })
     }
   }
 

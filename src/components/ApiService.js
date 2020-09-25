@@ -30,4 +30,5 @@ class ApiService {
 
   likeToy = (id) => fetch(`${this.root}/toys/${id}`, {method: "PATCH"}).then(res => res.json())
 
+  deleteToy = (id) => fetch(`${this.root}/toys/${id}`, {method: "DELETE"})
 }
